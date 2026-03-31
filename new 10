@@ -1,0 +1,25 @@
+Oracle live ---Code libray--Drop dwon list called 'Area
+
+
+SQL> SELECT employee_id, last_name, job_id
+FROM hr.employees
+WHERE job_id = 'AD_VP';
+
+Rows mentioned in execution plan is cardinality
+total:107 rows
+The job_id column has 19 distinct values so the optimizer predicted the cardinality for this statement to be 107/19 or
+5.6 rows, which gets rounded up by DBMS_XPLAN to 6 rows.
+It is import for the cardinality estimates to be as accurate as possible as they influence all aspects of the execution
+plan from the access method, to the join order. However, several factors can lead to incorrect cardinality estimates
+even when the basic table and column statistics are up to date. Some of these factors include:
+» Data skew
+» Multiple single column predicates on a single table
+» Function wrapped columns in the WHERE clause predicates
+» Complex expressions
+In the previous example there is a data skew in the EMPLOYEES table. There is not an even number of employees
+with each job_id. The actual number of rows in the employees table with a job_id of ‘AD_VP’ is only 2, which is 3
+times less than the Optimizer originally estimated. In order to accurately reflect that data skew, a histogram is
+required on the JOB_ID column. The presence of a histogram changes the formula used by the Optimizer to
+determine the cardinality estimate. 
+
+

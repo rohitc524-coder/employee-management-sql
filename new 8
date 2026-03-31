@@ -1,0 +1,15 @@
+192.168.1.110
+192.168.56.1
+
+
+Control Panel\System and Security\Windows Defender Firewall\Customize Settings
+
+
+SELECT NVL (TO_CHAR(cust_credit_limit*.15), 'Not Available') "NEW CREDIT" FROM sh.customers;
+SELECT TO_CHAR(NVL(cust_credit_limit*.15), 'Not Available')) "NEW CREDIT" FROM sh.customers;
+SELECT NVL (cust_credit_limit*.15, 'Not Available') "NEW CREDIT" FROM sh.customers;
+SELECT NVL (cust_credit_limit, 'Not Available')*.15 "NEW CREDIT" FROM sh.customers;
+
+
+
+https://www.goconqr.com/en/quiz/20911662/oca-1z0-071-12c-parte-2

@@ -1,0 +1,57 @@
+select nvl(to_char(sysdate,'DD-MON-RR hh24:MI:ss'),'21-sep-2019 10:09:32') from dual;
+
+select nvl(sysdate,'21-sep-2019 10:09:32') from dual;
+
+select sysdate from dual;
+
+select nvl(to_date(sysdate,'DD-MON-RR hh24:MI:ss'),'21-sep-2019 10:09:32') from dual;
+select nvl(to_date(sysdate,'DD-MON-RR hh24:MI:ss'),empty) from dual;
+
+create table test (id number, dt date);
+insert into test values (5,sysdate+1);
+
+select id,dt,nvl(to_char(dt,'dd-mm-yy'),'hello') as nvl_test from test;
+
+SELECT NVL(TO_DATE(SYSDATE, 'DD-MON-RR hh24:MI'), TO_date('21-sep-2019 10:09', 'DD-MON-RR hh24:MI')) FROM dual;
+
+SELECT NVL2(TO_char(dt,'DD-MON-RR'), TO_char(sysdate,'DD-MON-RR'),'hell') FROM test;
+
+
+select avg(sysdate) from dual;
+
+select sum(hire_date) from hr.employees;
+
+SELECT NVL(TO_DATE(SYSDATE, 'DD-MON-RR hh24:MI'), TO_date('21-sep-2019 10:09', 'DD-MON-RR hh24:MI')) FROM dual;
+SELECT NVL2(TO_DATE(SYSDATE, 'DD-MON-RR hh24:MI:ss'), TO_date('21-sep-2019 10:09:30', 'DD-MON-RR hh24:MI:ss'),sysdate) FROM dual;
+
+
+
+
+SELECT last_name, salary,
+       NVL2(commission_pct, salary + (salary * commission_pct), salary) income
+  FROM hr.employees
+  WHERE last_name like 'B%'
+  ORDER BY last_name;
+
+select sysdate-hire_date from hr.employees;
+
+select hire_date from hr.employees;
+SELECT months_between(sysdate,hire_date) 
+    FROM hr.employees;
+
+SELECT months_between(sysdate,to_date(hire_date,'DD-MON-RR hh24:mi:ss')) 
+    FROM hr.employees;
+
+select add_months(hire_date,33) from hr.employees;
+
+SELECT (TO_DATE('2024-02-07', 'YYYY-MM-DD')-TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI:SS')) FROM dual;
+
+SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI:SS') FROM dual;
+
+SELECT (next_day(LAST_DAY(SYSDATE),MON) FROM dual;
+
+SELECT next_day(LAST_DAY(SYSDATE),'MON') FROM dual;
+
+
+
+
