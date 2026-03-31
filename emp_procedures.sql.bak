@@ -1,13 +1,12 @@
-CREATE OR REPLACE PROCEDURE add_employee (
+CREATE OR REPLACE PROCEDURE update_salary (
     p_emp_id NUMBER,
-    p_name VARCHAR2,
-    p_salary NUMBER,
-    p_dept NUMBER
+    p_salary NUMBER
 )
 AS
 BEGIN
-    INSERT INTO employees(emp_id, emp_name, salary, dept_id)
-    VALUES (p_emp_id, p_name, p_salary, p_dept);
+    UPDATE employees
+    SET salary = p_salary
+    WHERE emp_id = p_emp_id;
 
     COMMIT;
 END;
